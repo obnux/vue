@@ -21,11 +21,10 @@ export default {
   },
   mounted ()
   {
-
     setTimeout( () =>
     {
-      this.showBlock = true;
       this.startTimer();
+      this.showBlock = true;
     }, this.delay );
   },
   methods: {
@@ -38,8 +37,8 @@ export default {
     },
     stopTimer ()
     {
-      console.log(this.reactionTime);
-      clearInterval( this.timer );
+
+      this.$emit( 'end', this.reactionTime );
       this.showBlock = false;
     }
   },
