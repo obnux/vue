@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 
 export default {
   /* setup ()
@@ -61,7 +62,8 @@ export default {
       role: null,
       terms: true,
       skills: [],
-      passwordError: ""
+      passwordError: "",
+      user: {}
     };
   },
   methods: {
@@ -90,10 +92,34 @@ export default {
     },
     submit ()
     {
-      // validate Password
-      this.passwordError = this.password.length > 5 ? "" : "Password must be at least 6 chars long !!";
+      let apiURL = 'http://localhost:4000/api/create-user';
 
-      console.log(this.skills);
+      this.user = {
+        password: this.password,
+        email: this.email,
+        role: this.role,
+        skills: this.skills,
+      };
+
+      axios.post( apiURL, this.user ).then( () =>
+      {
+        // this.$router.push( '/view' );
+        this.user = {
+          password: this.password,
+          email: this.email,
+          role: this.role,
+          skills: this.skills,
+        };
+
+      } ).catch( error =>
+      {
+        console.log( error );
+      } );
+
+      // validate Password
+      // this.passwordError = this.password.length > 5 ? "" : "Password must be at least 6 chars long !!";
+
+      // console.log( this.skills );
 
       return true;
     }
