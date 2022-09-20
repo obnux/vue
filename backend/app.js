@@ -1,12 +1,16 @@
+require( 'dotenv' ).config( { path: './.env' } );
+
 let express = require( 'express' ),
   cors = require( 'cors' ),
   mongoose = require( 'mongoose' ),
   database = require( './database' ),
   bodyParser = require( 'body-parser' );
 
+// console.log( process.env.DB_URL );
+
+
 // Connect mongoDB
 mongoose.Promise = global.Promise;
-console.log( "database.db", database.db );
 mongoose.connect( database.db, {
   useNewUrlParser: true,
   // useFindAndModify: true,

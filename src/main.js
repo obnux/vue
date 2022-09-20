@@ -1,4 +1,6 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+require( 'dotenv' ).config({ path: './.env' }); 
+import { createApp } from 'vue';
+import App from './App.vue';
 
-createApp(App).mount('#app')
+console.log( " => ", process.env );
+createApp( App ).mount( '#app' );
