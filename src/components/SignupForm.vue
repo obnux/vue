@@ -69,12 +69,12 @@ export default {
   methods: {
     addToSkills ( e )
     {
-
-      if ( e.target.value && e.key == "Enter" )
+      // console.log( "e.target", e );
+      if ( e.target.value && e.key == "," )
       {
-        if ( !this.skills.includes( this.tempSkill.toLowerCase() ) && !this.skills.includes( this.tempSkill.toUpperCase() ) )
+        if ( !this.skills.includes( this.tempSkill.replaceAll( ',', '' ).toLowerCase() ) && !this.skills.includes( this.tempSkill.replaceAll( ',', '' ).toUpperCase() ) )
         {
-          this.skills.push( this.tempSkill );
+          this.skills.push( this.tempSkill.replaceAll( ',', '' ) );
 
           this.skills.sort( function ( a, b )
           {
@@ -101,20 +101,26 @@ export default {
         skills: this.skills,
       };
 
-      axios.post( apiURL, this.user ).then( () =>
-      {
-        // this.$router.push( '/view' );
-        this.user = {
-          password: this.password,
-          email: this.email,
-          role: this.role,
-          skills: this.skills,
-        };
+      axios.post( apiURL, this.user )
+        .then( () =>
+        {
+          // this.$router.push( '/view' );
+          this.user = {
+            password: this.password,
+            email: this.email,
+            role: this.role,
+            skills: this.skills,
+          };
 
-      } ).catch( error =>
-      {
-        console.log( error );
-      } );
+          this.password = null;
+          this.email = null;
+          this.role = null;
+          this.skills = [];
+          
+        } ).catch( error =>
+        {
+          console.log( error );
+        } );
 
       // validate Password
       // this.passwordError = this.password.length > 5 ? "" : "Password must be at least 6 chars long !!";
