@@ -8,7 +8,7 @@ let express = require( 'express' ),
 
 // Connect mongoDB
 mongoose.Promise = global.Promise;
-mongoose.connect( process.env.DB_URL, {
+const conn = mongoose.connect( process.env.DB_URL, {
   useNewUrlParser: true,
   // useFindAndModify: true,
   useUnifiedTopology: true
@@ -21,8 +21,9 @@ mongoose.connect( process.env.DB_URL, {
     console.log( "Database could't be connected to: " + error );
   }
 );
-
+// const db = conn.db('UsersVueExpres');
 const userAPI = require( '../backend/routes/user.route' );
+
 const app = express();
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded( {

@@ -92,7 +92,9 @@ export default {
     },
     submit ()
     {
-      let apiURL = 'http://localhost:4000/api/create-user';
+      let apiURL = 'http://localhost:4000/api/create-user'; 
+      
+      if ( !this.email ) return;
 
       this.user = {
         password: this.password,
@@ -116,7 +118,7 @@ export default {
           this.email = null;
           this.role = null;
           this.skills = [];
-          
+
         } ).catch( error =>
         {
           console.log( error );

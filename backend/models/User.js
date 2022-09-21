@@ -15,7 +15,7 @@ let userSchema = new Schema( {
     type: Array
   },
 }, {
-  collection: 'users'
+  collection: 'Users'
 } );
 
 module.exports = mongoose.model( 'User', userSchema );
