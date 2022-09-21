@@ -39,20 +39,25 @@
       </div>
     </form>
 
+    <div>
+      <Table :updateTable=updateList />
+    </div>
   </div>
-</template>
+</template> 
 
 <script>
 import axios from 'axios';
+import Table from '@/components/table.vue';
 
 export default {
   /* setup ()
   {
-
-
     return {};
   } */
 
+  components: {
+    Table
+  },
   data ()
   {
     return {
@@ -63,7 +68,9 @@ export default {
       terms: true,
       skills: [],
       passwordError: "",
-      user: {}
+      user: {},
+      users: [],
+      updateList: false
     };
   },
   methods: {
@@ -92,8 +99,8 @@ export default {
     },
     submit ()
     {
-      let apiURL = 'http://localhost:4000/api/create-user'; 
-      
+      let apiURL = 'http://localhost:4000/api/create-user';
+
       if ( !this.email ) return;
 
       this.user = {
@@ -104,7 +111,7 @@ export default {
       };
 
       axios.post( apiURL, this.user )
-        .then( () =>
+        .then( ( { data } ) =>
         {
           // this.$router.push( '/view' );
           this.user = {
@@ -114,21 +121,27 @@ export default {
             skills: this.skills,
           };
 
+          this.users = data;
+
           this.password = null;
           this.email = null;
           this.role = null;
           this.skills = [];
 
-        } ).catch( error =>
+
+          return this.updateList = true;
+
+
+
+        } )
+        .then( () =>
+        {
+          this.updateList = false;
+        } )
+        .catch( error =>
         {
           console.log( error );
         } );
-
-      // validate Password
-      // this.passwordError = this.password.length > 5 ? "" : "Password must be at least 6 chars long !!";
-
-      // console.log( this.skills );
-
       return true;
     }
   },
