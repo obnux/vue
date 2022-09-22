@@ -110,22 +110,6 @@ export default {
         skills: this.skills,
       };
 
-<<<<<<< HEAD
-      axios.post( apiURL, this.user ).then( ( data ) =>
-      {
-        // this.$router.push( '/view' );
-        this.user = {
-          password: this.password,
-          email: this.email,
-          role: this.role,
-          skills: this.skills,
-        };
-        console.log( "data", data );
-      } ).catch( error =>
-      {
-        console.log( error );
-      } );
-=======
       axios.post( apiURL, this.user )
         .then( ( { data } ) =>
         {
@@ -144,7 +128,6 @@ export default {
           this.role = null;
           this.skills = [];
 
->>>>>>> cfe51d9de68379b3119990d4ea47b4de8c31ba64
 
           return this.updateList = true;
 

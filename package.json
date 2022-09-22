@@ -11,11 +11,7 @@
     "body-parser": "^1.20.0",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
-<<<<<<< HEAD
-    "dotenv": "^16.0.2",
-=======
     "dotenv-expand": "^9.0.0",
->>>>>>> cfe51d9de68379b3119990d4ea47b4de8c31ba64
     "express": "^4.18.1",
     "mongoose": "^6.6.1",
     "vue": "^3.0.0",
