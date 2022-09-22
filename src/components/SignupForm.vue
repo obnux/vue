@@ -39,20 +39,25 @@
       </div>
     </form>
 
+    <div>
+      <Table :updateTable=updateList />
+    </div>
   </div>
-</template>
+</template> 
 
 <script>
 import axios from 'axios';
+import Table from '@/components/table.vue';
 
 export default {
   /* setup ()
   {
-
-
     return {};
   } */
 
+  components: {
+    Table
+  },
   data ()
   {
     return {
@@ -63,18 +68,20 @@ export default {
       terms: true,
       skills: [],
       passwordError: "",
-      user: {}
+      user: {},
+      users: [],
+      updateList: false
     };
   },
   methods: {
     addToSkills ( e )
     {
-
-      if ( e.target.value && e.key == "Enter" )
+      // console.log( "e.target", e );
+      if ( e.target.value && e.key == "," )
       {
-        if ( !this.skills.includes( this.tempSkill.toLowerCase() ) && !this.skills.includes( this.tempSkill.toUpperCase() ) )
+        if ( !this.skills.includes( this.tempSkill.replaceAll( ',', '' ).toLowerCase() ) && !this.skills.includes( this.tempSkill.replaceAll( ',', '' ).toUpperCase() ) )
         {
-          this.skills.push( this.tempSkill );
+          this.skills.push( this.tempSkill.replaceAll( ',', '' ) );
 
           this.skills.sort( function ( a, b )
           {
@@ -94,6 +101,8 @@ export default {
     {
       let apiURL = 'http://localhost:3000/api/create-user';
 
+      if ( !this.email ) return;
+
       this.user = {
         password: this.password,
         email: this.email,
@@ -101,6 +110,7 @@ export default {
         skills: this.skills,
       };
 
+<<<<<<< HEAD
       axios.post( apiURL, this.user ).then( ( data ) =>
       {
         // this.$router.push( '/view' );
@@ -115,12 +125,40 @@ export default {
       {
         console.log( error );
       } );
+=======
+      axios.post( apiURL, this.user )
+        .then( ( { data } ) =>
+        {
+          // this.$router.push( '/view' );
+          this.user = {
+            password: this.password,
+            email: this.email,
+            role: this.role,
+            skills: this.skills,
+          };
 
-      // validate Password
-      // this.passwordError = this.password.length > 5 ? "" : "Password must be at least 6 chars long !!";
+          this.users = data;
 
-      // console.log( this.skills );
+          this.password = null;
+          this.email = null;
+          this.role = null;
+          this.skills = [];
 
+>>>>>>> cfe51d9de68379b3119990d4ea47b4de8c31ba64
+
+          return this.updateList = true;
+
+
+
+        } )
+        .then( () =>
+        {
+          this.updateList = false;
+        } )
+        .catch( error =>
+        {
+          console.log( error );
+        } );
       return true;
     }
   },
