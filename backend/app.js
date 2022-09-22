@@ -1,15 +1,22 @@
+require( 'dotenv' ).config();
+process.env[ 'DB_URL' ] = 'mongodb+srv://obeydi:ObeydiMongo@cluster-tp-amin.picvl.mongodb.net/?retryWrites=true&w=majority';
+
 let express = require( 'express' ),
   cors = require( 'cors' ),
   mongoose = require( 'mongoose' ),
   database = require( './database' ),
   bodyParser = require( 'body-parser' );
 
+
+const uri = "mongodb+srv://obeydi:ObeydiMongo@cluster-tp-amin.picvl.mongodb.net/?retryWrites=true&w=majority";
+
+
 // Connect mongoDB
 mongoose.Promise = global.Promise;
-console.log( "database.db", database.db );
-mongoose.connect( database.db, {
+
+mongoose.connect( uri, {
   useNewUrlParser: true,
-  // useFindAndModify: true,
+  // useFindAndModify: false,
   useUnifiedTopology: true
 } ).then( () =>
 {

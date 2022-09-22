@@ -21,7 +21,7 @@ userRoute.route( '/' ).get( ( req, res ) =>
 // Create User
 userRoute.route( '/create-user' ).post( ( req, res, next ) =>
 {
-  console.log( "req.body", req.body );
+  // console.log( "req.body", req.body );
   
   UserModel.create( req.body, ( error, data ) =>
   {

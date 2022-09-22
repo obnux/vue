@@ -92,7 +92,7 @@ export default {
     },
     submit ()
     {
-      let apiURL = 'http://localhost:4000/api/create-user';
+      let apiURL = 'http://localhost:3000/api/create-user';
 
       this.user = {
         password: this.password,
@@ -101,7 +101,7 @@ export default {
         skills: this.skills,
       };
 
-      axios.post( apiURL, this.user ).then( () =>
+      axios.post( apiURL, this.user ).then( ( data ) =>
       {
         // this.$router.push( '/view' );
         this.user = {
@@ -110,7 +110,7 @@ export default {
           role: this.role,
           skills: this.skills,
         };
-
+        console.log( "data", data );
       } ).catch( error =>
       {
         console.log( error );
