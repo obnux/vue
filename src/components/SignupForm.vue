@@ -99,7 +99,7 @@ export default {
     },
     submit ()
     {
-      let apiURL = 'http://localhost:3000/api/create-user';
+      let apiURL = 'http://localhost:4000/api/create-user';
 
       if ( !this.email ) return;
 
@@ -130,9 +130,6 @@ export default {
 
 
           return this.updateList = true;
-
-
-
         } )
         .then( () =>
         {
