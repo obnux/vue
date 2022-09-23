@@ -10,7 +10,6 @@ let express = require( 'express' ),
 mongoose.Promise = global.Promise;
 const conn = mongoose.connect( process.env.DB_URL, {
   useNewUrlParser: true,
-  // useFindAndModify: false,
   useUnifiedTopology: true
 } ).then( () =>
 {
@@ -21,8 +20,8 @@ const conn = mongoose.connect( process.env.DB_URL, {
     console.log( "Database could't be connected to: " + error );
   }
 );
-// const db = conn.db('UsersVueExpres');
-const userAPI = require( '../backend/routes/user.route' );
+// const db = conn.db('blog-dojo');
+const userAPI = require( './routes/post.route' );
 
 const app = express();
 app.use( bodyParser.json() );
