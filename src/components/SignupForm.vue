@@ -50,11 +50,12 @@ import axios from 'axios';
 import Table from '@/components/table.vue';
 
 export default {
-  /* setup ()
+  setup ()
   {
-    return {};
-  } */
+    console.log( "ROOT_API", process.env.ROOT_API );
 
+    return {};
+  },
   components: {
     Table
   },
