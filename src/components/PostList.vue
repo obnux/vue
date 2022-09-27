@@ -1,0 +1,32 @@
+<template>
+  <div class="post-list">
+    <div v-for="post in posts" :key="post.id">
+      <SinglePost :post=post />
+    </div>
+  </div>
+</template>
+
+<script>
+import SinglePost from "./SinglePost.vue";
+export default {
+  setup ( props )
+  {
+    console.log( props.posts );
+    return {};
+  },
+  props: {
+    posts: {
+      type: Array,
+      default: () =>
+      {
+        return [];
+      }
+    },
+  },
+  components: { SinglePost }
+};
+</script>
+
+<style lang="scss" scoped>
+
+</style>
