@@ -1,4 +1,4 @@
-require( 'dotenv' ).config();
+// require( 'dotenv' ).config();
 
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -9,6 +9,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "Home" */ '../views/HomeView.vue' )
   },
 
+  {
+    path: '/posts/:id',
+    name: 'Details',
+    component: () => import(/* webpackChunkName: "Home" */ '../views/Details' ),
+    props: true
+  },
   // redirect
   {
     path: "/all-jobs",

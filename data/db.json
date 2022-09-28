@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Welcome to new blog",
+      "body": " LoreVelit nulla labore mollit ex veniam tempor fugiat nulla fugiat anim pariatur ut culpa non. ",
+      "tags": [
+        "webdev",
+        "coding",
+        "news"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Second",
+      "body": "Labore adipisicing eu aliqua cillum pariatur do culpa eiusmod pariatur commodo Lorem. Dolor est cillum culpa ea tempor. Non ex velit irure officia aliquip cupidatat culpa consectetur officia officia est aute. Magna fugiat consectetur aute ut exercitation anim pariatur adipisicing sunt. Mollit cupidatat excepteur adipisicing amet deserunt laboris consequat sunt esse eiusmod et. Laboris exercitation consequat excepteur ea voluptate deserunt fugiat culpa sunt. Fugiat enim proident voluptate fugiat labore officia eu elit laborum et ullamco aliquip velit cupidatat.<br> Ullamco reprehenderit eiusmod reprehenderit reprehenderit reprehenderit elit cillum id commodo aliquip sunt eu voluptate excepteur. Non nulla et veniam esse tempor culpa occaecat ad culpa. Do ad duis id laboris ea fugiat qui aute amet est velit velit do. Laboris amet fugiat culpa dolore ex id culpa elit sint labore nostrud mollit esse commodo. Deserunt consequat laborum labore culpa ad duis occaecat cillum sunt aliquip reprehenderit culpa esse. Laborum amet eiusmod et Lorem minim aliquip. Do nulla do elit sunt aliqua.",
+      "tags": [
+        "CSS",
+        "WebDev",
+        "news"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Third",
+      "body": "Dolor est cillum culpa ea tempor. Non ex velit irure officia aliquip cupidatat culpa consectetur officia officia est aute. Magna fugiat consectetur aute ut exercitation anim pariatur adipisicing sunt. Mollit cupidatat excepteur adipisicing amet deserunt laboris consequat sunt esse eiusmod et. Laboris exercitation consequat excepteur ea voluptate deserunt fugiat culpa sunt. Fugiat enim proident voluptate fugiat labore officia eu elit laborum et ullamco aliquip velit cupidatat. ",
+      "tags": [
+        "Third",
+        "WebDev",
+        "news"
+      ]
+    }
+  ]
+}

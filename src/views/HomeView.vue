@@ -1,26 +1,44 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <PostList :posts=posts />
+    
+    <button @click="showPosts = !showPosts">Toggel Posts</button>
+    <button @click="posts.pop()">Delete a Post</button>
+
+    <div v-if="error">
+      {{error}}
+    </div>
+    <div class="" v-if="!posts.length">
+      Loading ...
+    </div>
+    <div v-else>
+      <PostList v-if="showPosts" :posts=posts />
+    </div>
+
   </div>
 
 </template>
 
 <script>
-import { ref } from 'vue';
+/* eslint-disable */
+
 import PostList from '../components/PostList.vue';
+import getPosts from '../composables/getPosts';
 
 export default {
-    setup() {
-        const posts = ref([
-            { title: "Title 1", body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mauris est, blandit vel tincidunt eu, sollicitudin id eros. Vivamus sem nulla, rhoncus vel arcu id, rutrum pharetra nunc. Duis vitae dictum ex. Sed vehicula risus purus, quis rutrum augue malesuada sed.", id: 1 },
-            { title: "Title 2", body: "Etiam gravida felis a nisi sollicitudin tempor. Quisque sagittis, ipsum quis lacinia molestie, orci lorem dapibus neque, ac venenatis massa lectus id lectus. Donec scelerisque, eros nec venenatis bibendum, sem sem lacinia est, maximus sollicitudin odio est vel leo.", id: 2 }
-        ]);
-        return {
-            posts
-        };
-    },
-    components: { PostList }
+  setup ()
+  {
+
+    const { posts, showPosts, error, load } = getPosts();
+    load();
+
+    return {
+      posts,
+      showPosts,
+      error
+    };
+  },
+  components: { PostList }
 }
 
 </script>
